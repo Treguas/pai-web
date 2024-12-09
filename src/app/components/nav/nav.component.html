@@ -1,6 +1,6 @@
 <nav class="navbar rounded-box justify-between gap-4 shadow">
   <div class="navbar-start">
-    <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:9]">
+    <!-- <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:9]">
       <button id="dropdown-name" type="button"
         class="dropdown-toggle btn btn-text btn-circle dropdown-open:bg-base-content/10 dropdown-open:text-base-content"
         aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
@@ -14,7 +14,7 @@
         <hr class="border-base-content/25 -mx-2 my-3" />
         <li><a class="dropdown-item" href="#">Link 4</a></li>
       </ul>
-    </div>
+    </div> -->
   </div>
   <div class="navbar-center flex items-center">
     <a class="link text-base-content/90 link-neutral text-xl font-semibold no-underline" href="#">
@@ -43,8 +43,8 @@
             </div>
           </div>
           <div>
-            <h6 class="text-base-content/90 text-base font-semibold">John Doe</h6>
-            <small class="text-base-content/50">Admin</small>
+            <h6 class="text-base-content/90 text-base font-semibold">{{userLogged?.name}}</h6>
+            <small class="text-base-content/50">{{userLogged.role}}</small>
           </div>
         </li>
         <li>
@@ -53,28 +53,31 @@
             My Profile
           </a>
         </li>
-        <li>
-          <a class="dropdown-item" href="#">
-            <span class="icon-[tabler--settings]"></span>
-            Settings
-          </a>
-        </li>
-        <li>
+        @if(userLogged.role === "ADMINISTRATOR") {
+          <li>
+            <a class="dropdown-item" href="#">
+              <span class="icon-[tabler--settings]"></span>
+              Settings
+            </a>
+          </li>
+
+        }
+        <!-- <li>
           <a class="dropdown-item" href="#">
             <span class="icon-[tabler--receipt-rupee]"></span>
             Billing
           </a>
-        </li>
-        <li>
+        </li> -->
+        <!-- <li>
           <a class="dropdown-item" href="#">
             <span class="icon-[tabler--help-triangle]"></span>
             FAQs
           </a>
-        </li>
+        </li> -->
         <li class="dropdown-footer gap-2">
-          <a class="btn btn-error btn-soft btn-block" href="#">
+          <a class="btn btn-error btn-soft btn-block" (click)="logout()">
             <span class="icon-[tabler--logout]"></span>
-            Sign out
+            Sair
           </a>
         </li>
       </ul>
