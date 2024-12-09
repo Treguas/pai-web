@@ -6,21 +6,19 @@ export const userIsLoggedInResolver = () => new Promise((res, rej) => {
   // const loginService = inject(LoginService);
   const router = inject(Router);
 
-  return true
+  const notAuthenticated = () => {
+    localStorage.clear();
+    router.navigateByUrl('/login');
+    rej('USUÁRIO NÃO AUTENTICADO!')
+    return false;
+  }
 
-  // const notAuthenticated = () => {
-  //   localStorage.clear();
-  //   router.navigateByUrl('/login');
-  //   rej('USUÁRIO NÃO AUTENTICADO!')
-  //   return false;
-  // }
+  const token = localStorage.getItem('token');
+  const user = localStorage.getItem('userLogged');
 
-  // const token = localStorage.getItem('token');
-  // const user = localStorage.getItem('userLogged');
-
-  // if (!token || !user) {
-  //   res(notAuthenticated());
-  // } else {
-  //   res(true);
-  // }  
+  if (!token || !user) {
+    res(notAuthenticated());
+  } else {
+    res(true);
+  }  
 })
