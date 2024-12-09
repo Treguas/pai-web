@@ -21,6 +21,8 @@ export class CalendarComponent {
   currentEvents = signal<EventApi[]>([]);
   newEvent = { title: '', start: '', end: '' };
 
+  @ViewChild('formModal') modal: any;
+
   nameUser: string = "Treguas";
   today = new Date();
   newEventsStarts: String = ""
@@ -103,10 +105,10 @@ export class CalendarComponent {
   }
 
   openModalCreateEvent(data: DateSelectArg) {
-    const modal = document.getElementById('form-modal') as HTMLDialogElement;
-    modal.classList.remove('hidden');
-    modal.classList.add('open');
-    modal.classList.add('opened');
+    const modalElement = this.modal.nativeElement as HTMLDialogElement;
+    modalElement.classList.remove('hidden');
+    modalElement.classList.add('open');
+    modalElement.classList.add('opened');
 
     debugger
 
