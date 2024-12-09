@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
   {
@@ -14,6 +15,7 @@ export const routes: Routes = [
     path: "dashboard",
     loadChildren: () => import('./layout/layout.module').then((m) => m.LayoutModule),
   },
+  { path: 'login', component: LoginComponent },
   // {
   //   path: 'auth',
   //   loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
