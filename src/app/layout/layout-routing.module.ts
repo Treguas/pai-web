@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { DashboardComponent } from './dashboard.component';
+import { userIsLoggedInResolver } from '../resolvers/user-isloggedin.resolver';
 // import { userIsLoggedInResolver } from '../resolvers/user-isloggedin.resolver';
 
 
@@ -23,7 +24,8 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        loadComponent: () => import("./dashboard.component").then(component => component.DashboardComponent)
+        loadComponent: () => import("./dashboard.component").then(component => component.DashboardComponent),
+        resolve: { userIsLoggedIn: userIsLoggedInResolver }
       },
       // {
       //   path: "profile",
